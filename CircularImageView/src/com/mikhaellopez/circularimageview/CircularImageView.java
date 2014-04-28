@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
@@ -69,7 +70,11 @@ public class CircularImageView extends ImageView {
 	@Override
 	public void onDraw(Canvas canvas) {
 		// load the bitmap
-		BitmapDrawable bitmapDrawable = (BitmapDrawable) this.getDrawable();
+		Drawable drawable = this.getDrawable();
+		BitmapDrawable bitmapDrawable = null;
+		if (drawable instanceof BitmapDrawable){
+			bitmapDrawable = (BitmapDrawable) drawable;
+		}
 		if (bitmapDrawable != null)
 			image = bitmapDrawable.getBitmap();
 
